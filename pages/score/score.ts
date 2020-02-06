@@ -8,9 +8,11 @@ import { NavController } from 'ionic-angular';
 export class ScoreCard {
 
   constructor(public navCtrl: NavController) { }
-
+  overs = [];
+  ballValue = 0;
   calculateRun(v){
-    
+    ballValue = v;
+    overs.push(v);
   }
 
 }

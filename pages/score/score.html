@@ -7,11 +7,14 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button small color="dark" (click)="calculateRun(0)">Dark</button>
+  <button ion-button small color="dark" (click)="calculateRun(0)">0</button>
 <button ion-button small (click)="calculateRun(1)">1</button>
 <button ion-button small (click)="calculateRun(2)">2</button>
 <button ion-button small (click)="calculateRun(3)">3</button>
 <button ion-button small color="secondary" (click)="calculateRun(4)">4</button>
 <button ion-button small color="secondary" (click)="calculateRun(6)">6</button>
 <button ion-button small color="danger"   (click)="calculateRun('w')">W</button>
+<button ion-button small color="danger"   (click)="calculateRun('over')">Over</button>
+{{ballValue}}
+
 </ion-content>
