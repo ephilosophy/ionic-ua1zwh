@@ -14,7 +14,9 @@
 <button ion-button small color="secondary" (click)="calculateRun(4)">4</button>
 <button ion-button small color="secondary" (click)="calculateRun(6)">6</button>
 <button ion-button small color="danger"   (click)="calculateRun('w')">W</button>
-<button ion-button small color="danger"   (click)="calculateRun('over')">Over</button>
-{{ballValue}}
-
 </ion-content>
+<ion-list >{{ballIndex}}
+  <ion-label ion-item *ngFor="let ball of over" >
+    {{ ball }}
+  </ion-label>  
+</ion-list>
