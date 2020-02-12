@@ -14,9 +14,25 @@
 <button ion-button small color="secondary" (click)="calculateRun(4)">4</button>
 <button ion-button small color="secondary" (click)="calculateRun(6)">6</button>
 <button ion-button small color="danger"   (click)="calculateRun('w')">W</button>
+<h2>
+  Overs
+</h2>
+<div *ngIf="overIndex==1">
+  <ul >
+    <li>
+      <span>Over 1:</span>
+      <span *ngFor="let ball of over">{{ball}}</span>
+    </li>
+  </ul>
+</div>
+<div>
+  <ul >    
+    <li *ngFor="let over of overs;let i = index;">
+      <span>Over {{i+1}}:</span>
+      <span *ngFor="let ball of over">{{ball}}</span>
+    </li>
+  </ul>
+</div>
+
+
 </ion-content>
-<ion-list >{{ballIndex}}
-  <ion-label ion-item *ngFor="let ball of over" >
-    {{ ball }}
-  </ion-label>  
-</ion-list>

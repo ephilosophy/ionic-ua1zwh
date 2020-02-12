@@ -9,14 +9,17 @@ export class ScoreCard {
 
   constructor(public navCtrl: NavController) { }
   overs = [];
-  over = [0,1,2,3];  
-  ballIndex = 1;
+  over = [];  
+  ballIndex = 0;
+  overIndex = 1;
   calculateRun(v){
-    ballIndex += 1;
-    over.push(v);
-    if(ballIndex == 6){
-      overs.push(over);
-      ballIndex = 1;
+    this.ballIndex += 1;
+    this.over.push(v);
+    if(this.ballIndex == 6){
+      this.overIndex += 1;
+      this.overs.push(this.over);
+      this.over = [];
+      this.ballIndex = 0;
     }
   }
 
