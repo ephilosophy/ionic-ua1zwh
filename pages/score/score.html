@@ -17,19 +17,12 @@
 <h2>
   Overs
 </h2>
-<div *ngIf="overIndex==1">
-  <ul >
-    <li>
-      <span>Over 1:</span>
-      <span *ngFor="let ball of over">{{ball}}</span>
-    </li>
-  </ul>
-</div>
 <div>
   <ul >    
     <li *ngFor="let over of overs;let i = index;">
-      <span>Over {{i+1}}:</span>
-      <span *ngFor="let ball of over">{{ball}}</span>
+      <b>Over {{i+1}}:</b>
+      <span *ngFor="let ball of over.over">{{ball}}&nbsp;</span>
+      <b>Score</b>{{over.runs}}/{{over.wickets}}
     </li>
   </ul>
 </div>

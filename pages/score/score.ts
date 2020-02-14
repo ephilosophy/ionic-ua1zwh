@@ -8,17 +8,21 @@ import { NavController } from 'ionic-angular';
 export class ScoreCard {
 
   constructor(public navCtrl: NavController) { }
-  overs = [];
-  over = [];  
+  overs = [{over:[],runs:0,wickets:0}];  
   ballIndex = 0;
-  overIndex = 1;
+  overIndex = 0;
   calculateRun(v){
     this.ballIndex += 1;
-    this.over.push(v);
+    this.overs[thisoverIndex].over.push(v);
+    if(v != 'w'){
+      this.overs[this.overIndex].runs += v;
+    }else{
+      this.overs[this.overIndex].wickets += 1;
+    }
     if(this.ballIndex == 6){
+      var rs = this.overs[this.overIndex].runs, ws = this.overs[this.overIndex].wickets;
       this.overIndex += 1;
-      this.overs.push(this.over);
-      this.over = [];
+      this.overs.push({over:[],runs:rs,wickets:ws});      
       this.ballIndex = 0;
     }
   }
