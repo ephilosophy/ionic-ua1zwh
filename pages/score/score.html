@@ -7,25 +7,40 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button small color="dark" (click)="calculateRun(0)">0</button>
-<button ion-button small (click)="calculateRun(1)">1</button>
-<button ion-button small (click)="calculateRun(2)">2</button>
-<button ion-button small (click)="calculateRun(3)">3</button>
-<button ion-button small color="secondary" (click)="calculateRun(4)">4</button>
-<button ion-button small color="secondary" (click)="calculateRun(6)">6</button>
-<button ion-button small color="danger"   (click)="calculateRun('w')">W</button>
-<h2>
-  Overs
-</h2>
-<div>
-  <ul >    
-    <li *ngFor="let over of overs;let i = index;">
-      <b>Over {{i+1}}:</b>
-      <span *ngFor="let ball of over.over">{{ball}}&nbsp;</span>
-      <b>Score</b>{{over.runs}}/{{over.wickets}}
-    </li>
-  </ul>
-</div>
-
+<ion-grid>
+  <ion-row>
+    <ion-col col-12>
+      <button ion-button small color="dark" (click)="calculateRun(0)">0</button>
+      <button ion-button small (click)="calculateRun(1)">1</button>
+      <button ion-button small (click)="calculateRun(2)">2</button>
+      <button ion-button small (click)="calculateRun(3)">3</button>
+      <button ion-button small color="secondary" (click)="calculateRun(4)">4</button>
+      <button ion-button small color="secondary" (click)="calculateRun(6)">6</button>
+      <button ion-button small color="danger"   (click)="calculateRun('w')">W</button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let overs of innings">
+    <ion-col col-12>
+      <h2>
+        Overs Wise Score
+      </h2>
+      <ion-row *ngFor="let over of overs;let i = index;">
+        <ion-col col-8>
+          <b>Over {{i+1}}:</b>
+          <span *ngFor="let ball of over.over">{{ball}}&nbsp;</span>
+        </ion-col>
+        <ion-col col-4>
+          <b>Score :</b>{{over.runs}}/{{over.wickets}}
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col col-12>
+      <button ion-button color="dark" (click)="completeInning(innIndex)">Complete Inning</button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="matchComplete">
+    <ion-col>{{result}}</ion-col>
+  </ion-row>
+</ion-grid>
 
 </ion-content>
