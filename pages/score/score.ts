@@ -39,17 +39,20 @@ export class ScoreCard {
       this.overIndex = 0;
     }else{
       this.matchComplete = true;
-      var firstInning = this.innings[0];
+      var firstInning = this.innings[0];      
       var secondInning = this.innings[1];
-      var firstInningRuns = firstInning[firstInning.length].runs;
-      var firstInningWickets = firstInning[firstInning.length].wickets;
-      var secondInningRuns = secondInning[secondInning.length].runs;
-      var secondInningWickets = secondInning[secondInning.length].wickets;
+      var firstInningRuns = firstInning[firstInning.length-1].runs;
+      var firstInningWickets = firstInning[firstInning.length-1].wickets;
+      var secondInningRuns = secondInning[secondInning.length-1].runs;
+      var secondInningWickets = secondInning[secondInning.length-1].wickets;
       if(firstInningRuns > secondInningRuns){
         this.result = "Inning 1 won by "+(firstInningRuns - secondInningRuns)+" runs.";
       }
       if(firstInningRuns < secondInningRuns){
         this.result = "Inning 2 won by "+(10 - secondInningWickets)+" wickets.";
+      }
+      if(firstInningRuns==secondInningRuns){
+        this.result = "Its a Tie..";
       }
     }
   }
