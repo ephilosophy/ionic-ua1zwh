@@ -1,11 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Match Info
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <label>Number of Players</label>
+        <input type="number" [(ngModel)]="numberOfPlayers">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <label>Number of Overs</label>
+        <input type="number" [(ngModel)]="numberOfOvers">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
