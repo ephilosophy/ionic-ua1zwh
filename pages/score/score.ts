@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Match } from '../../app/match';
 
 @Component({
   selector: 'page-score',
@@ -8,6 +9,10 @@ import { NavController } from 'ionic-angular';
 export class ScoreCard {
 
   constructor(public navCtrl: NavController) { }
+  match : Match = {
+    players:2,
+    overs:1
+  };
   innings = [[{over:[],runs:0,wickets:0}]];
   innIndex = 0;  
   ballIndex = 0;
