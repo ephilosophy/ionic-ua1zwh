@@ -21,18 +21,29 @@ export class ScoreCard {
   matchComplete = false;
 
   calculateRun(v){
+    if(this.matchComplete){
+      return;
+    }
     this.ballIndex += 1;
     this.innings[this.innIndex][this.overIndex].over.push(v);
     if(v != 'w'){
       this.innings[this.innIndex][this.overIndex].runs += v;
     }else{
       this.innings[this.innIndex][this.overIndex].wickets += 1;
+      if(this.match.players-1 == this.innings[this.innIndex][this.overIndex].wickets){
+        this.completeInning(this.innIndex);
+      }
     }
     if(this.ballIndex == 6){
       var rs = this.innings[this.innIndex][this.overIndex].runs, ws = this.innings[this.innIndex][this.overIndex].wickets;
-      this.overIndex += 1;
-      this.innings[this.innIndex].push({over:[],runs:rs,wickets:ws});      
-      this.ballIndex = 0;
+      if(this.match.overs-1 == this.overIndex){
+        this.completeInning(this.innIndex);
+      }else{
+        this.overIndex += 1;
+        this.innings[this.innIndex].push({over:[],runs:rs,wickets:ws});    
+        this.ballIndex = 0;
+      }
+
     }
   }
 
@@ -54,7 +65,7 @@ export class ScoreCard {
         this.result = "Inning 1 won by "+(firstInningRuns - secondInningRuns)+" runs.";
       }
       if(firstInningRuns < secondInningRuns){
-        this.result = "Inning 2 won by "+(10 - secondInningWickets)+" wickets.";
+        this.result = "Inning 2 won by "+(this.match.players-1 - secondInningWickets)+" wickets.";
       }
       if(firstInningRuns==secondInningRuns){
         this.result = "Its a Tie..";
