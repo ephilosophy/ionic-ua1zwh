@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Match } from '../../app/match';
+import { MatchService } from '../../app/match.service';
 
 @Component({
   selector: 'page-score',
   templateUrl: 'score.html'  
 })
-export class ScoreCard {
+export class ScoreCard implements OnInit {
 
-  constructor(public navCtrl: NavController) { }
-  match : Match = {
-    players:2,
-    overs:1
-  };
+  constructor(public navCtrl: NavController, private matchService : MatchService  ) { }
+  match : Match;
+
+
+
+
+
+  ngOnInit(){
+    this.getMatchInitials();
+  }
+  getMatchInitials(): void {
+    this.matchService.getMatchInitials()
+    .subscribe(match => this.match = match);
+  }
   innings = [[{over:[],runs:0,wickets:0}]];
   innIndex = 0;  
   ballIndex = 0;

@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { ScoreCard } from '../pages/score/score';
 import { TabsPage } from '../pages/tabs/tabs';
+import { MatchService } from './match.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler, providers: [MatchService]}
   ]
 })
 export class AppModule {}
