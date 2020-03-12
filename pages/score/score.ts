@@ -37,12 +37,14 @@ export class ScoreCard implements OnInit {
       this.innings[this.innIndex][this.overIndex].wickets += 1;
       if(this.match.players-1 == this.innings[this.innIndex][this.overIndex].wickets){
         this.completeInning(this.innIndex);
+        this.ballIndex = 0;
       }
     }
     if(this.ballIndex == 6){
       var rs = this.innings[this.innIndex][this.overIndex].runs, ws = this.innings[this.innIndex][this.overIndex].wickets;
       if(this.match.overs-1 == this.overIndex){
         this.completeInning(this.innIndex);
+        this.ballIndex = 0;
       }else{
         this.overIndex += 1;
         this.innings[this.innIndex].push({over:[],runs:rs,wickets:ws});    

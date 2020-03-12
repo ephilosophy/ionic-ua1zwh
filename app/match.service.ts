@@ -7,7 +7,7 @@ export class MatchService {
   constructor() { }
 
   getMatchInitials(): Match {
-    console.log("service called");
+    
     return {
       players:2,
       overs:1
