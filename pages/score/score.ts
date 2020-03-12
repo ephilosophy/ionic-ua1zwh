@@ -5,23 +5,18 @@ import { MatchService } from '../../app/match.service';
 
 @Component({
   selector: 'page-score',
-  templateUrl: 'score.html'  
+  templateUrl: 'score.html',
+  providers:[MatchService]  
 })
 export class ScoreCard implements OnInit {
 
   constructor(public navCtrl: NavController, private matchService : MatchService  ) { }
   match : Match;
-
-
-
-
-
   ngOnInit(){
     this.getMatchInitials();
   }
   getMatchInitials(): void {
-    this.matchService.getMatchInitials()
-    .subscribe(match => this.match = match);
+    this.match = this.matchService.getMatchInitials();
   }
   innings = [[{over:[],runs:0,wickets:0}]];
   innIndex = 0;  
