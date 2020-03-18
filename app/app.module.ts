@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { ScoreCard } from '../pages/score/score';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MatchService } from './match.service';
+import { StorageService } from './storage.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { MatchService } from './match.service';
     TabsPage
   ],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler, providers: [MatchService]}
+    {provide: ErrorHandler, useClass: IonicErrorHandler, providers: [MatchService], providers: [StorageService]}
   ]
 })
 export class AppModule {}

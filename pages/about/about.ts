@@ -1,22 +1,27 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { StorageService } from '../../app/storage.service';
 
 @Component({
   selector: 'page-about',
-  templateUrl: 'about.html'
+  templateUrl: 'about.html',
+  providers:[StorageService] 
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public storageService:StorageService) {
 
   }
  
   
   submit(numberOfPlayers,numberOfOvers){
-    console.log("1---",numberOfPlayers);
-    console.log("2---",numberOfOvers);
-    
+    this.storageService.setObject('match_init',{
+      players:numberOfPlayers,overs:numberOfOvers
+    });
+
+    this.storageService.getObject('match_init').then(result => {
+      console.log(result)
+    })
   }
 
 }
